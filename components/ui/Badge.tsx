@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 export type BadgeVariant = "blue" | "green" | "gray" | "red" | "amber";
-type BadgeWeight = "soft" | "solid";
+type BadgeWeight = "flat" | "solid";
 
 interface BadgeProps {
   variant?: BadgeVariant;
@@ -15,24 +15,27 @@ interface BadgeProps {
 const base = "inline-flex items-center justify-center font-medium";
 
 const STYLES: Record<BadgeVariant, Record<BadgeWeight, string>> = {
-  blue: { soft: "bg-blue-50 text-blue-600", solid: "bg-blue-600 text-white" },
+  blue: { flat: "bg-blue-50 text-blue-600", solid: "bg-blue-600 text-white" },
   green: {
-    soft: "bg-green-50 text-green-600",
+    flat: "bg-green-50 text-green-600",
     solid: "bg-green-600 text-white",
   },
-  gray: { soft: "bg-gray-100 text-gray-500", solid: "bg-gray-600 text-white" },
-  red: { soft: "bg-red-50 text-red-600", solid: "bg-red-600 text-white" },
+  gray: { flat: "bg-gray-100 text-gray-500", solid: "bg-gray-600 text-white" },
+  red: { flat: "bg-red-50 text-red-600", solid: "bg-red-600 text-white" },
   amber: {
-    soft: "bg-amber-50 text-amber-600",
+    flat: "bg-amber-50 text-amber-600",
     solid: "bg-amber-600 text-white",
   },
 };
 
 function getBadgeSizeClassName(small: boolean) {
-  return small ? "h-7 px-3 text-xs" : "h-11 px-4 text-sm";
+  if (small) {
+    return "h-7 px-3 text-xs";
+  }
+  return "h-11 px-4 text-sm";
 }
 
-export function Badge({
+function BaseBadge({
   variant = "blue",
   solid = false,
   small = false,
@@ -40,7 +43,7 @@ export function Badge({
   className = "",
   children,
 }: BadgeProps) {
-  const weight: BadgeWeight = solid ? "solid" : "soft";
+  const weight: BadgeWeight = solid ? "solid" : "flat";
   const sizeClasses = getBadgeSizeClassName(small);
   const shape = rounded ? "rounded-full" : "rounded-md";
 
@@ -52,3 +55,33 @@ export function Badge({
     </span>
   );
 }
+
+type BadgeColorProps = Omit<BadgeProps, "variant">;
+
+function Blue(props: BadgeColorProps) {
+  return <BaseBadge variant="blue" {...props} />;
+}
+
+function Green(props: BadgeColorProps) {
+  return <BaseBadge variant="green" {...props} />;
+}
+
+function Gray(props: BadgeColorProps) {
+  return <BaseBadge variant="gray" {...props} />;
+}
+
+function Red(props: BadgeColorProps) {
+  return <BaseBadge variant="red" {...props} />;
+}
+
+function Amber(props: BadgeColorProps) {
+  return <BaseBadge variant="amber" {...props} />;
+}
+
+export const Badge = {
+  Blue,
+  Green,
+  Gray,
+  Red,
+  Amber,
+};
