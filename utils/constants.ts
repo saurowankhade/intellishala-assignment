@@ -19,10 +19,21 @@ export const TestStatus = {
   Draft: "Draft",
 } as const;
 
+export const subjectColors: Record<string, string> = {
+  Maths: "text-blue-600",
+  Mathematics: "text-blue-600",
+  English: "text-purple-600",
+  Science: "text-green-600",
+  "Social Science": "text-amber-600",
+  "Social Studies": "text-amber-600",
+};
+
+export const DEFAULT_SUBJECT_COLOR = "text-gray-500";
+
 export const DEMO_PROFILE = {
   name: "Demo Teacher",
   initials: "DT",
-  email: "teacher@educore.com",
+  email: "teacher@intellishala.com",
   workspace: "Demo 2",
   role: "Teacher",
 } as const;

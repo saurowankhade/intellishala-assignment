@@ -20,7 +20,7 @@ interface BaseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 type ButtonProps = Omit<BaseButtonProps, "color">;
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/40 disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+  "inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/40 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
 
 const STYLES: Record<ButtonColor, Record<ButtonWeight, string>> = {
   blue: {
