@@ -1,8 +1,8 @@
 //  return "28 Sep, 10:00 AM
-export const formatDate = (iso: string | null): string | null => {
-  if (!iso) return null;
+export const formatDate = (date: string | null): string | null => {
+  if (!date) return null;
 
-  return new Date(iso).toLocaleString("en-US", {
+  return new Date(date).toLocaleString("en-US", {
     day: "numeric",
     month: "short",
     hour: "numeric",
