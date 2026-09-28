@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Intellishala — My Tests",
+  title: "My Tests | Intellishala",
   description:
     "Teacher dashboard for Intellishala: create tests, build a question bank, and share files across your classes.",
 };

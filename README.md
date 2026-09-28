@@ -4,6 +4,10 @@ The "My Tests" page for a teacher: a list of tests they have created, with searc
 a class filter, a status filter, a count chip, and pagination. Built as a standalone
 Next.js app from the provided design.
 
+Live: https://intellishala-assignment.vercel.app/
+
+Demo recording: [public/demo.mov](public/demo.mov)
+
 ## Tech
 
 - Next.js (App Router)
