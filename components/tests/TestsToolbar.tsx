@@ -47,7 +47,7 @@ const TestsToolbar = ({
           onChange={(event) => onSearchChange(event.target.value)}
           onClear={() => onSearchChange("")}
         />
-        {/* Mobile: the two filters sit side by side under the search box. */}
+
         <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center">
           <Select
             className="w-full sm:w-44"
