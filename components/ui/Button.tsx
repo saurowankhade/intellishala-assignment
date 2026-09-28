@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ElementType, ReactNode } from "react";
 import { Spinner } from "@/components/icons";
 
-type ButtonColor = "blue" | "gray";
+type ButtonColor = "blue" | "gray" | "red";
 type ButtonWeight = "solid" | "flat";
 
 interface BaseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,6 +9,7 @@ interface BaseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   as?: ElementType;
   flat?: boolean;
   small?: boolean;
+  large?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   iconOnly?: boolean;
@@ -30,11 +31,18 @@ const STYLES: Record<ButtonColor, Record<ButtonWeight, string>> = {
     solid: "bg-gray-900 text-white hover:bg-gray-800",
     flat: "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50",
   },
+  red: {
+    solid: "bg-red-600 text-white hover:bg-red-700",
+    flat: "bg-red-50 text-red-600 border border-red-200 hover:bg-red-100",
+  },
 };
 
-function getButtonSizeClassName(small: boolean, iconOnly: boolean) {
+function getButtonSizeClassName(small: boolean, large: boolean, iconOnly: boolean) {
   if (small) {
     return `h-9 text-sm ${iconOnly ? "w-9 rounded-md" : "px-4 rounded-lg"}`;
+  }
+  if (large) {
+    return `h-12 text-base ${iconOnly ? "w-12 rounded-xl" : "px-6 rounded-xl"}`;
   }
   return `h-11 text-sm ${iconOnly ? "w-11 rounded-lg" : "px-5 rounded-xl"}`;
 }
@@ -44,6 +52,7 @@ function BaseButton({
   as: Component = "button",
   flat = false,
   small = false,
+  large = false,
   leftIcon,
   rightIcon,
   iconOnly = false,
@@ -54,7 +63,7 @@ function BaseButton({
   ...props
 }: BaseButtonProps) {
   const weight: ButtonWeight = flat ? "flat" : "solid";
-  const sizeClasses = getButtonSizeClassName(small, iconOnly);
+  const sizeClasses = getButtonSizeClassName(small, large, iconOnly);
 
 
   return (
@@ -88,8 +97,13 @@ function Gray(props: ButtonProps) {
   return <BaseButton color="gray" {...props} />;
 }
 
+function Red(props: ButtonProps) {
+  return <BaseButton color="red" {...props} />;
+}
+
 
 export const Button = {
   Blue,
   Gray,
+  Red,
 };
