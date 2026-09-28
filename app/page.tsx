@@ -4,7 +4,7 @@ import testsData from "@/lib/tests.json";
 import PageHeader from "@/components/tests/PageHeader";
 import MyTestsView from "@/components/tests/MyTestsView";
 
-const tests = testsData as Test[];
+const tests: Test[] = Array.isArray(testsData) ? (testsData as Test[]) : [];
 
 export default function Home() {
   return (
