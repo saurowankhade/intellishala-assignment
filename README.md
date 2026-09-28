@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Intellishala - My Tests
 
-## Getting Started
+The "My Tests" page for a teacher: a list of tests they have created, with search,
+a class filter, a status filter, a count chip, and pagination. Built as a standalone
+Next.js app from the provided design.
 
-First, run the development server:
+## Tech
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+
+No component libraries. The table, pills, inputs, select and buttons are hand-written.
+
+## Run it
+
+Requires Node 18.18 or newer.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Production build:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Data
 
-To learn more about Next.js, take a look at the following resources:
+`lib/tests.json` (27 tests) is loaded as a static import in `app/page.tsx` and passed
+down as a typed `Test[]`. Search and both filters work together on that data. The count
+chip shows how many tests match the current filters.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes and decisions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Status colors: design colors three; chose the rest to fit (Active amber, Overdue red, Completed gray).
+- Empty states: separate ones for no data and for filters matching nothing.
+- Icons: hand-authored inline SVGs, based on Hugeicons, close to the design (not exact).
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/            layout (dashboard shell + title), page (loads data)
+components/
+  layout/       Sidebar, DashboardLayout, Logo, etc.
+  tests/        MyTestsView (filter/paginate), TestsToolbar, TestsTable, Pagination
+  ui/           Button, Badge, Select, SearchInput, Table, EmptyState, HorizontalScroller
+  icons/        inline SVG icons
+lib/tests.json  the 27 tests
+types/          Test and TestStatus types
+utils/          constants and helpers
+```

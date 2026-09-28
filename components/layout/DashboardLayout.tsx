@@ -16,8 +16,8 @@ const DashboardLayout = ({ activeKey, children }: DashboardLayoutProps) => {
   const closeDrawer = () => setDrawerOpen(false);
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <div className="hidden lg:block">
+    <div className="flex h-screen overflow-hidden bg-gray-50">
+      <div className="hidden h-screen shrink-0 lg:block">
         <Sidebar activeKey={activeKey} />
       </div>
 
@@ -53,8 +53,8 @@ const DashboardLayout = ({ activeKey, children }: DashboardLayoutProps) => {
         </div>
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex items-center gap-3 border-b border-gray-200 bg-white px-4 py-3 lg:hidden">
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+        <header className="flex shrink-0 items-center gap-3 border-b border-gray-200 bg-white px-4 py-3 lg:hidden">
           <Button.Gray
             flat
             small
