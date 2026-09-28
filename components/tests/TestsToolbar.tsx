@@ -34,7 +34,7 @@ const TestsToolbar = ({
     <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
       <div className="flex items-center gap-3">
         <h2 className="text-xl font-semibold text-gray-900">My Tests</h2>
-        <Badge.Blue small rounded>
+        <Badge.Blue small className="rounded-lg! px-2!">
           {count} {count === 1 ? "Test" : "Tests"}
         </Badge.Blue>
       </div>

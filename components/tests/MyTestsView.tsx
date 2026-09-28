@@ -38,7 +38,9 @@ const MyTestsView = ({ tests }: MyTestsViewProps) => {
     router.replace(`?${next.toString()}`, { scroll: false });
   };
 
-  const classNames = [...new Set(tests.map((t) => t.className))].sort();
+  const classNames = [...new Set(tests.map((t) => t.className))].sort((a, b) =>
+    a.localeCompare(b, undefined, { numeric: true })
+  );
   const classOptions = toOptions("All Classes", classNames);
   const statusOptions = toOptions("All Status", Object.values(TestStatus));
 
