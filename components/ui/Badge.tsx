@@ -1,6 +1,12 @@
 import type { ReactNode } from "react";
 
-export type BadgeVariant = "blue" | "green" | "gray" | "red" | "amber";
+export type BadgeVariant =
+  | "blue"
+  | "green"
+  | "gray"
+  | "red"
+  | "amber"
+  | "purple";
 type BadgeWeight = "flat" | "solid";
 
 interface BadgeProps {
@@ -25,6 +31,10 @@ const STYLES: Record<BadgeVariant, Record<BadgeWeight, string>> = {
   amber: {
     flat: "bg-amber-50 text-amber-600",
     solid: "bg-amber-600 text-white",
+  },
+  purple: {
+    flat: "bg-purple-50 text-purple-600",
+    solid: "bg-purple-600 text-white",
   },
 };
 
@@ -78,10 +88,15 @@ function Amber(props: BadgeColorProps) {
   return <BaseBadge variant="amber" {...props} />;
 }
 
+function Purple(props: BadgeColorProps) {
+  return <BaseBadge variant="purple" {...props} />;
+}
+
 export const Badge = {
   Blue,
   Green,
   Gray,
   Red,
   Amber,
+  Purple,
 };

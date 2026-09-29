@@ -13,7 +13,7 @@ import { formatDate } from "@/utils/helpers";
 const statusBadge: Record<TestStatusType, typeof Badge.Blue> = {
   [TestStatus.Active]: Badge.Amber,
   [TestStatus.Scheduled]: Badge.Blue,
-  [TestStatus.Completed]: Badge.Gray,
+  [TestStatus.Completed]: Badge.Purple,
   [TestStatus.Published]: Badge.Green,
   [TestStatus.Overdue]: Badge.Red,
   [TestStatus.Draft]: Badge.Gray,
