@@ -6,7 +6,7 @@ Next.js app from the provided design.
 
 Live: https://intellishala-assignment.vercel.app/
 
-Demo recording: [public/demo.mov](public/demo.mov)
+Demo recording: https://www.youtube.com/watch?v=-liAlPoNMQg
 
 ## Tech
 
